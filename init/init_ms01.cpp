@@ -74,7 +74,10 @@ void init_target_properties()
         property_override_dual("ro.product.model", "ro.vendor.product.model", "SM-G7102");
         property_override_dual("ro.product.device", "ro.vendor.product.device", "ms013g");
         gsm_properties();
-    } 
+    } else {
+        gsm_properties();
+    }    
+} 
 
     std::string device = GetProperty("ro.product.device", "");
     LOG(ERROR) << "Found bootloader id " << bootloader <<  " setting build properties for "
