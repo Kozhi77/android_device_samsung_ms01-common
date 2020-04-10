@@ -42,6 +42,10 @@
 using android::base::GetProperty;
 using android::init::property_set;
 
+void lte_properties()
+{
+    property_set("ro.telephony.default_network", "9");
+}
 void gsm_properties()
 {
     property_set("ro.telephony.default_network", "3");
@@ -62,6 +66,7 @@ void init_target_properties()
         property_override("ro.build.description", "ms01ltexx-user 4.4.2 KOT49H G7105XXUBNI2 release-keys");
         property_override_dual("ro.product.model", "ro.vendor.product.model", "SM-G7105");
         property_override_dual("ro.product.device", "ro.vendor.product.device", "ms01lte");
+	lte_properties()
     } else if (bootloader.find("G7102") == 0) {
         /* ms013gxx */
         property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "samsung/ms013gxx/ms013g:4.4.2/KOT49H/G7102XXUBOB1:user/release-keys");
@@ -69,9 +74,7 @@ void init_target_properties()
         property_override_dual("ro.product.model", "ro.vendor.product.model", "SM-G7102");
         property_override_dual("ro.product.device", "ro.vendor.product.device", "ms013g");
         gsm_properties();
-    } else {
-        gsm_properties();
-    }
+    } 
 
     std::string device = GetProperty("ro.product.device", "");
     LOG(ERROR) << "Found bootloader id " << bootloader <<  " setting build properties for "
