@@ -42,14 +42,6 @@ on post-fs-data
     chown system camera /sys/class/leds/led:flash_torch/brightness 
     
 on boot
-    # NFC_NXP (ms01lte)
-    symlink /dev/pn547 /dev/pn544
-    symlink /dev/pn547 /dev/pn54x
-
-    # NFC_SLSI (ms01lte)
-    mkdir /data/nfc 0770 nfc nfc
-    mkdir /data/nfc/param 0770 nfc nfc
-    
     #Accelerometer-BMA254
     chown system input /sys/class/input/input3/data
     chown system input /sys/class/input/input3/delay
