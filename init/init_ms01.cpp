@@ -28,14 +28,9 @@
    IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <stdlib.h>
-#include <stdio.h>
 
 #include <android-base/logging.h>
 #include <android-base/properties.h>
-
-#include "property_service.h"
-#include "vendor_init.h"
 
 #include "init_msm8226.h"
 
@@ -53,7 +48,7 @@ void gsm_properties()
     property_set("telephony.lteOnGsmDevice", "0");
 }
 
-void init_target_properties()
+void vendor_load_properties()
 {
     std::string platform = GetProperty("ro.board.platform", "");
     if (platform != ANDROID_TARGET)
